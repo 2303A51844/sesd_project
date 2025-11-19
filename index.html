@@ -2,216 +2,291 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MediAssist – Telangana Rural Health Network</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediAssist — Telangana Rural Health Network</title>
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        body {
+        /* GLOBAL RESET */
+        * {
             margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background: #f0f6ff;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #eef2ff;
             color: #222;
         }
 
-        /* Header / Hero Section */
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 14px 26px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* CLEAN CUSTOM LOGO */
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+        }
+
+        .logo-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1555c9;
+        }
+
+        /* HERO SECTION */
         .hero {
-            background: linear-gradient(to right, #1877c9, #46a8ff);
-            padding: 50px 20px;
+            background: linear-gradient(135deg, #1d67de, #4cabff, #8bd4ff);
+            padding: 140px 20px 90px;
             text-align: center;
-            color: white;
+            color: #fff;
         }
 
         .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 8px;
-            font-weight: 600;
+            font-size: 3rem;
+            font-weight: 700;
         }
 
         .hero p {
+            margin-top: 10px;
             font-size: 1.1rem;
-            opacity: 0.95;
+            opacity: 0.9;
         }
 
-        /* Container */
+        /* WAVE DIVIDER */
+        .wave {
+            width: 100%;
+            display: block;
+        }
+
+        /* CONTAINER */
         .container {
-            max-width: 1150px;
-            margin: 30px auto;
-            padding: 0 18px;
+            max-width: 1200px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
         }
 
-        /* Section Title */
         .section-title {
-            font-size: 1.6rem;
-            color: #145a9e;
-            margin-bottom: 8px;
-            font-weight: 600;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #133d7a;
+            margin-bottom: 10px;
         }
 
-        /* Doctor Cards */
+        .section-sub {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        /* DOCTOR GRID */
         .doctor-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 28px;
         }
 
+        /* CARD (ERROR-FREE) */
         .doctor-card {
-            background: white;
-            padding: 18px;
-            border-radius: 14px;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-            transition: 0.25s;
-            border-left: 6px solid #1877c9;
+            background: rgba(255,255,255,0.9);
+            padding: 22px;
+            border-radius: 16px;
+            border: 1px solid rgba(0,0,0,0.06);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
         .doctor-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+            transform: translateY(-7px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+        }
+
+        .doctor-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: #eaf3ff;
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1555c9;
+            margin-bottom: 10px;
         }
 
         .doctor-name {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #145a9e;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #124b95;
         }
 
         .tag {
             display: inline-block;
-            margin-top: 5px;
-            background: #e8f2ff;
-            color: #0f5aa0;
-            padding: 3px 10px;
+            padding: 4px 12px;
+            background: #e0edff;
+            color: #1555c9;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 6px 0 12px;
             border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 500;
         }
 
         .info-line {
-            margin: 8px 0;
-            font-size: 0.95rem;
+            margin: 6px 0;
+            font-size: 0.93rem;
         }
 
         .info-line span {
             font-weight: 600;
-            color: #144b8b;
+            color: #144a8b;
         }
 
-        /* Emergency Section */
+        /* EMERGENCY BOX */
         .emergency-box {
-            margin: 40px 0;
-            background: #fff4d6;
-            border-left: 6px solid #ffc034;
-            padding: 20px;
+            margin-top: 45px;
+            background: #fff4d1;
+            border-left: 6px solid #ffbf32;
+            padding: 18px 20px;
             border-radius: 10px;
         }
 
         .emergency-box h3 {
-            margin-top: 0;
             font-size: 1.3rem;
-            font-weight: 600;
-            color: #8b6200;
+            color: #805600;
+            margin-bottom: 5px;
         }
 
-        /* Footer */
+        /* FOOTER */
         footer {
             text-align: center;
-            padding: 16px;
-            margin-top: 40px;
-            background: #ebf3ff;
-            color: #333;
-            font-size: 0.9rem;
+            padding: 22px;
+            background: #eaf1ff;
+            border-top: 3px solid #c6d8ff;
+            font-size: 0.95rem;
         }
-
     </style>
 </head>
+
 <body>
 
-<!-- Hero -->
-<div class="hero">
-    <h1>MediAssist</h1>
-    <p>Rural Health Network – Telangana | Easy access to clinics, doctors & timings</p>
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo-area">
+        <!-- SVG LOGO FIXED AND CLEAN -->
+        <svg class="logo-icon" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="32" r="28" stroke="#1d67de" stroke-width="4"/>
+            <path d="M22 32h20M32 22v20" stroke="#1d67de" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+        <div class="logo-title">MediAssist</div>
+    </div>
+    <div class="nav-title">Telangana Rural Health Network</div>
 </div>
 
+<!-- HERO -->
+<div class="hero">
+    <h1>MediAssist</h1>
+    <p>Find Doctors • Clinics • Specialties • Timings — Easily</p>
+
+    <svg class="wave" viewBox="0 0 1440 320">
+        <path fill="#eef2ff"
+        d="M0,256L80,245.3C160,235,320,213,480,197.3C640,181,800,171,960,176C1120,181,1280,203,1360,213.3L1440,224L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z">
+        </path>
+    </svg>
+</div>
+
+<!-- CONTENT -->
 <div class="container">
 
-    <!-- How to Use -->
-    <h2 class="section-title">How to Use</h2>
-    <p>
-        MediAssist helps villagers quickly find doctors, specialties, timings, and clinic locations.
-        This interface is designed to be simple and mobile-friendly for rural users.
-    </p>
+    <h2 class="section-title">How MediAssist Helps</h2>
+    <p class="section-sub">A simple digital tool built to help villagers find healthcare services quickly.</p>
 
-    <!-- Doctor Listings -->
-    <h2 class="section-title" style="margin-top: 35px;">Available Doctors</h2>
+    <h2 class="section-title" style="margin-top:30px;">Available Doctors</h2>
 
     <div class="doctor-grid">
 
-        <!-- Card 1 -->
         <div class="doctor-card">
+            <div class="doctor-icon">👨‍⚕️</div>
             <div class="doctor-name">Dr. S. Ramesh</div>
             <div class="tag">General Physician</div>
             <div class="info-line"><span>Clinic:</span> Sruthi PHC, Hanamkonda</div>
             <div class="info-line"><span>Days:</span> Mon, Wed, Fri</div>
-            <div class="info-line"><span>Timings:</span> 9:00 AM – 1:00 PM</div>
-            <div class="info-line"><span>Contact:</span> +91-90000 10001</div>
+            <div class="info-line"><span>Time:</span> 9 AM – 1 PM</div>
+            <div class="info-line"><span>Phone:</span> +91-90000 10001</div>
         </div>
 
-        <!-- Card 2 -->
         <div class="doctor-card">
+            <div class="doctor-icon">🧒</div>
             <div class="doctor-name">Dr. Anusha Devi</div>
             <div class="tag">Pediatrics</div>
-            <div class="info-line"><span>Clinic:</span> Balaji Rural Clinic, Parkal</div>
+            <div class="info-line"><span>Clinic:</span> Balaji Clinic, Parkal</div>
             <div class="info-line"><span>Days:</span> Tue, Thu, Sat</div>
-            <div class="info-line"><span>Timings:</span> 10:00 AM – 2:00 PM</div>
-            <div class="info-line"><span>Contact:</span> +91-90000 10002</div>
+            <div class="info-line"><span>Time:</span> 10 AM – 2 PM</div>
+            <div class="info-line"><span>Phone:</span> +91-90000 10002</div>
         </div>
 
-        <!-- Card 3 -->
         <div class="doctor-card">
+            <div class="doctor-icon">🦴</div>
             <div class="doctor-name">Dr. M. Venkatesh</div>
             <div class="tag">Orthopedics</div>
             <div class="info-line"><span>Clinic:</span> Sri Lakshmi Clinic, Narsampet</div>
-            <div class="info-line"><span>Days:</span> Mon – Sat</div>
-            <div class="info-line"><span>Timings:</span> 4:00 PM – 7:00 PM</div>
-            <div class="info-line"><span>Contact:</span> +91-90000 10003</div>
+            <div class="info-line"><span>Days:</span> Mon–Sat</div>
+            <div class="info-line"><span>Time:</span> 4 PM – 7 PM</div>
+            <div class="info-line"><span>Phone:</span> +91-90000 10003</div>
         </div>
 
-        <!-- Card 4 -->
         <div class="doctor-card">
+            <div class="doctor-icon">👩‍🍼</div>
             <div class="doctor-name">Dr. Kavya R.</div>
             <div class="tag">Gynecology</div>
             <div class="info-line"><span>Clinic:</span> Mothers Care Clinic, Jangaon</div>
             <div class="info-line"><span>Days:</span> Mon, Wed, Fri</div>
-            <div class="info-line"><span>Timings:</span> 11:00 AM – 3:00 PM</div>
-            <div class="info-line"><span>Contact:</span> +91-90000 10004</div>
+            <div class="info-line"><span>Time:</span> 11 AM – 3 PM</div>
+            <div class="info-line"><span>Phone:</span> +91-90000 10004</div>
         </div>
 
-        <!-- Card 5 -->
         <div class="doctor-card">
+            <div class="doctor-icon">😁</div>
             <div class="doctor-name">Dr. A. Prakash</div>
             <div class="tag">Dentist</div>
             <div class="info-line"><span>Clinic:</span> Smile Dental Care, Bhupalpally</div>
-            <div class="info-line"><span>Days:</span> Tue – Sat</div>
-            <div class="info-line"><span>Timings:</span> 10:00 AM – 1:00 PM</div>
-            <div class="info-line"><span>Contact:</span> +91-90000 10005</div>
+            <div class="info-line"><span>Days:</span> Tue–Sat</div>
+            <div class="info-line"><span>Time:</span> 10 AM – 1 PM</div>
+            <div class="info-line"><span>Phone:</span> +91-90000 10005</div>
         </div>
 
     </div>
 
-    <!-- Emergency Section -->
     <div class="emergency-box">
         <h3>🚑 Emergency Help</h3>
-        <p>For critical emergencies, please dial <strong>108 Ambulance</strong> immediately.</p>
-        <p>To update MediAssist clinic data, contact the district health officer.</p>
+        <p>Call <strong>108 Ambulance</strong> immediately for emergencies.</p>
+        <p>For data updates, contact your district health department.</p>
     </div>
 
 </div>
 
+<!-- FOOTER -->
 <footer>
-    © 2025 MediAssist – Telangana Rural Health Network
+    © 2025 MediAssist | Telangana Rural Health Network
 </footer>
 
 </body>
